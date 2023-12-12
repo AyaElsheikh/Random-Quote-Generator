@@ -1,0 +1,26 @@
+h1{
+    font-family: Impact;
+    font-size: 80px;
+    font-weight: 700;
+    margin: 50px;
+    color: black;
+}
+P{
+    font-family:'Times New Roman';
+   font-size: 35px;
+    font-weight: 400;
+    margin: 30px;
+    color: black; 
+}
+
+button{
+    background-color: blue;
+    font-family: Arial;
+    font-size: 13.3333px;
+    font-weight: 400;
+    padding: 30px 90px;
+    color: white;
+}
+button:hover{
+    background-color: green;  
+}
