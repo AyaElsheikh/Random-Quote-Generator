@@ -1,26 +1,92 @@
-h1{
-    font-family: Impact;
-    font-size: 80px;
-    font-weight: 700;
-    margin: 50px;
-    color: black;
-}
-P{
-    font-family:'Times New Roman';
-   font-size: 35px;
-    font-weight: 400;
-    margin: 30px;
-    color: black; 
+
+body{
+    
+    background-color: #F7ECDE;
+    
 }
 
-button{
-    background-color: blue;
-    font-family: Arial;
-    font-size: 13.3333px;
-    font-weight: 400;
-    padding: 30px 90px;
-    color: white;
+
+h1{
+   	
+color:#352E28; 
+font-size: 50px;
+line-height: 60px;
+font-weight: 500;
+font-family: 'Pacifico', cursive;
 }
-button:hover{
-    background-color: green;  
+
+
+h1::before{
+    content: "";
+    position: absolute;
+    background-color: #FEC260;
+    left:0;
+    bottom: 10px;
+    width: 100%;
+    height: 25%;
+    z-index: -1; 
+    transition: height 350ms;
+}
+
+h1:hover::before{
+    height: 50%;
+}
+
+ .bookmark-body h2{
+    font-family: 'Righteous', cursive;
+   
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 500;
+    background-image: linear-gradient(to right,#3ca55c,#b5ac49);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+}
+
+.bookmark-body{
+    border-top: dotted 2px;
+    border-bottom: dotted 2px;
+}
+
+.bookmark-body label ,button{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color:#212529;
+    font-family: 'PT Sans Caption', sans-serif;
+}
+
+.bookmark-body button{
+    color:white;
+    background-color:#BB4120;
+}
+.bookmark-body button:hover{
+    color:white;
+    background-color:#a13112ee; 
+}
+table {
+    font-family: 'PT Sans Caption', sans-serif;
+    color:#212529;
+}
+ th{
+    font-weight: 700;
+    line-height: 24px;
+}
+ #tableContent td{
+    font-size: 16px;
+    font-weight: 400;
+}
+ .btn-visit{
+    background-color: #8A9E23;
+    color:#fff;
+    border :1px solid #8A9E23;
+    padding: 7px 10px;
+    font-size: 16px;
+    font-weight: 200;
+}
+.btn-visit:hover{
+    background-color: #7e9123;
+    color:#fff;
+    border :1px solid #8A9E23;
+    padding: 7px 10px;
 }

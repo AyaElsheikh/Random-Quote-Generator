@@ -1,27 +1,99 @@
 
-var quote=[
- "<p> “Be yourself; everyone else is already taken.” </p><p>--Oscar Wilde</p>",
- "<p> “Resentment is like drinking poison and waiting for your enemies to die.”</p> <p>--Nelson Mandela</p>",
- "<p>“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.”</p> <p>-- Albert Einstein</p>",
-"<p>“You know you're in love when you can't fall asleep because reality is finally better than your dreams.”</p> <p>-- Dr. Seuss</p>",
-"<p>“In three words I can sum up everything I've learned about life: it goes on.”</p> <p>-- Robert Frost</p>"
-  ];
-  function generateQuote(){
-    document.getElementById('quoteOutput').innerHTML=(quote[ Math.floor(Math.random()* quote.length)]);
+var BookmarkName =document.getElementById("bookmarkName");
+var BookMarkURL =document.getElementById("bookmarkURL");
+
+
+
+var bookmarkContainer;
+if(localStorage.getItem("mysites") != null){
+  bookmarkContainer=JSON.parse(localStorage.getItem('mysites'));
+  display(bookmarkContainer);
+}
+else{
+  bookmarkContainer=[];
+}
+
+
+function addSite(){
+  if(validsite(BookmarkName.value)&&validurl(BookMarkURL.value)){
+    var site ={
+      name:BookmarkName.value,
+      url:BookMarkURL.value,
+    }
+  
+  bookmarkContainer.push(site);
+  localStorage.setItem("mysites",JSON.stringify(bookmarkContainer));
+  clearForm();
+  display(bookmarkContainer);
+  
+  }
+ else{
+  window.alert(`Site name must contain at least 3 characters
+  Site URL must be a valid one`)
+ }
   }
 
-// var history=[];
-// function generateQuote(){
-//   var randomNum=quote[ Math.floor(Math.random()* quote.length)];
-//   // document.getElementById('quoteOutput').innerHTML=(randomNum);
-//   history.push(randomNum);
-//   if (history.includes(randomNum)){
-//     generateQuote();
+  function clearForm(){
+    BookmarkName.value='';
+    BookMarkURL.value='';
+  }
+ function display(){
 
-//   }
-//   else{
-//     document.getElementById('quoteOutput').innerHTML=(randomNum);
-//     history.push(randomNum);
-//   }
-// }
+  var cartoona=``;
+    for(var i=0;i<bookmarkContainer.length;i++ ){
+  cartoona +=`
 
+  
+     <tr>
+    <td>${i+1}</td>
+    <td>${bookmarkContainer[i].name}</td>
+  
+    <td>
+    <button class="btn btn-visit"><i class="fa-solid fa-eye"></i> Visit</button>
+    </td>
+
+    <td>
+    <button class="btn btn-danger" onclick="deleteSite(${i})"><i class="fa-solid fa-trash"></i> Delete</button>
+    </td>
+    </tr>
+    
+    `
+   }
+   document.getElementById('tableContent').innerHTML=cartoona;
+
+
+ }
+
+ function deleteSite(deleteIndex){
+  bookmarkContainer.splice(deleteIndex,1)
+  localStorage.setItem("mysites",JSON.stringify(bookmarkContainer));
+  display(bookmarkContainer)
+ }
+
+ function validsite(name){
+ var regex=/\w{3}/;
+ if(regex.test(name)){
+  BookmarkName.classList.replace('is-invalid','is-valid')
+  
+  return true;
+ }
+else{
+  BookmarkName.classList.add('is-invalid')
+
+  return false;
+}
+ }
+
+ function validurl(url){
+  var reg=/(.com)$/;
+  if(reg.test(url)){
+    BookMarkURL.classList.replace('is-invalid','is-valid')
+   
+   return true;
+  }
+ else{
+  BookMarkURL.classList.add('is-invalid')
+ 
+   return false;
+ }
+  }
